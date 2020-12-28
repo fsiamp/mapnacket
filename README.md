@@ -1,6 +1,6 @@
 ![alt tag](https://raw.githubusercontent.com/fsiamp/mapnacket/master/theme/logo.png)
 
-<b>Map Designer that uses Bing Maps API</b><br>
+<b>Map designer that uses Bing Maps API</b><br>
 
 mapNACKET is an online tool that enables designing and capturing of map entities
 
