@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>mapNACKET: Design Map Entities through Bing Maps API</title>
+    <link rel="icon" type="image/png" href="theme/favicon.png" />
+    <meta charset="utf-8" />
+<meta name="keywords" content="maps, routes, bing maps, google maps, map direction, instant direction, map paths, web maps, interactive, map sdk, map entities, snapshots, screenshots, maps api">
+<meta name="author" content="MapNACKET">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="MapNACKET is an interactive map designer which makes use of Bing Maps API and enables capturing of live map snapshots.">
+<head>
+<meta name="google-site-verification" content="xsfM5-Kr2ZGWK7PTbKV75oWM-5kwXpP-AADhWOEPPk0" />
+    <style type="text/css">
+ html,body{
+  height:100%;
+margin:0;
+  padding:0;
+background-color:#F7F7F7;
+overflow: visible
+position:relative;
+
+
+ }
+
+  #map_canvas{
+  height: 105%;
+margin-bottom:-12px;
+top:0px;
+
+ }
+
+
+ 
+a:link,
+a:visited{color:#900;text-decoration:none;}a:hover,
+a:active{color:#c00;}
+ 
+ .b:hover{color:#900;text-decoration:underline;}
+
+ 
+ 
+</style>
+
+
+<script src="jquery.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script src="html2canvas.min.js"></script>
+<script>
+$(".drag").draggable();
+$(".drag").droppable();
+var takeScreenShot = function() {
+    html2canvas(document.getElementById("myMap"), {
+
+        onrendered: function (canvas) {
+
+            var link=document.createElement("a");
+            var randomnumber = Math.floor(Math.random() * (99999999 - 11111111 + 1)) + 11111111;
+            link.href=canvas.toDataURL('image/jpg');   //function blocks CORS
+            link.download = randomnumber + ".jpg";
+            link.click();
+        }
+    });
+}
+</script>
+    <script type='text/javascript'
+            src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap'
+            async defer></script>
+    <script type='text/javascript'>
+    var map, drawingManager;
+
+    function GetMap() {
+        map = new Microsoft.Maps.Map('#myMap', {
+            credentials: 'AmY05j27qDvcW8z3__5bSPkX4vNLisClvmfdCsoz_w1F4VOxygCIm__0qpwZ82aG'
+        });
+
+        //Load the DrawingTools module
+        Microsoft.Maps.loadModule('Microsoft.Maps.DrawingTools', function () {
+            //Create an instance of the DrawingTools class and bind it to the map.
+            var tools = new Microsoft.Maps.DrawingTools(map);
+
+            //Show the drawing toolbar and enable editting on the map.
+            tools.showDrawingManager(function (manager) {
+
+                //Add events to the drawing manager.
+                Microsoft.Maps.Events.addHandler(manager, 'drawingChanged', function () { highlight('drawingChanged'); });
+                Microsoft.Maps.Events.addHandler(manager, 'drawingChanging', function () { highlight('drawingChanging'); });
+                Microsoft.Maps.Events.addHandler(manager, 'drawingEnded', function () { highlight('drawingEnded'); });
+                Microsoft.Maps.Events.addHandler(manager, 'drawingErased', function () { highlight('drawingErased'); });
+                Microsoft.Maps.Events.addHandler(manager, 'drawingModeChanged', function () { highlight('drawingModeChanged'); });
+                Microsoft.Maps.Events.addHandler(manager, 'drawingStarted', function () { highlight('drawingStarted'); });
+            })
+        });
+    }
+
+    function highlight(id) {
+        //Highlight the mouse event div to indicate that the event has fired.
+        document.getElementById(id).style.background = 'LightGreen';
+
+        //Remove the highlighting after a second.
+        setTimeout(function () { document.getElementById(id).style.background = 'white'; }, 1000);
+    }
+    </script>
+</head>
+<body>
+    <div id="myMap" style="position:relative;width:100%;height:99%;"></div>
+
+    <div id="drawingChanged" style='display:none;'>drawingChanged</div>
+    <div id="drawingChanging" style='display:none;'>drawingChanging</div>
+    <div id="drawingEnded" style='display:none;'>drawingEnded</div>
+    <div id="drawingErased" style='display:none;'>drawingErased</div>
+    <div id="drawingModeChanged" style='display:none;'>drawingModeChanged</div>
+    <div id="drawingStarted" style='display:none;'>drawingStarted</div>
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-99549641-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  
+  
+
+</body>
+</html>
