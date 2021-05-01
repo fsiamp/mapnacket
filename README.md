@@ -1,4 +1,4 @@
-![alt tag](https://raw.githubusercontent.com/fsiamp/mapnacket/master/theme/logo.png)
+![alt tag](https://raw.githubusercontent.com/fsiamp/mapnacket-designer/master/theme/logo.png)
 
 <b>Map designer that uses Bing Maps API</b><br>
 
@@ -8,6 +8,6 @@ The current software has been built in PHP and Javascript
 
 # Screenshots
 
-![alt tag](https://raw.githubusercontent.com/fsiamp/mapnacket/master/resources/polygon.png)
+![alt tag](https://raw.githubusercontent.com/fsiamp/mapnacket-designer/master/resources/polygon.png)
 
-![alt tag](https://raw.githubusercontent.com/fsiamp/mapnacket/master/resources/shape.png)
+![alt tag](https://raw.githubusercontent.com/fsiamp/mapnacket-designer/master/resources/shape.png)
